@@ -81,17 +81,35 @@ docs(readme): update installation instructions
 3. Document any failing seeds for regression testing
 4. Ensure both deterministic and production modes are tested
 
+### Implementation Plan
+**IMPORTANT**: Follow the detailed implementation roadmap in `.claude/implementation_roadmap.md`
+
+The project follows a 5-milestone development plan:
+1. **Milestone 1**: Core Foundation (PRNG, scheduler, virtual time)
+2. **Milestone 2**: Synchronization Primitives (mutex, channels, condition variables)
+3. **Milestone 3**: Advanced Detection (deadlock detection, timeouts, tracing)
+4. **Milestone 4**: Testing & Production Readiness (performance, documentation)
+5. **Milestone 5**: Extended Features (shrinking, policies, weftfix tool)
+
+**Current Status**: Milestone 1 - Task 1.1 (PRNG Implementation)
+
+### Task Management Process
+1. **Before starting work**: Review current milestone in `.claude/milestone_tracker.md`
+2. **During development**: Follow detailed tasks in `.claude/task_list.md`
+3. **After completing tasks**: Update milestone tracker with progress
+4. **Update this section**: Reflect current milestone/task status
+
 ### Implementation Status
 - ✅ Basic project structure
 - ✅ Build tag separation
 - ✅ API stubs for all primitives
-- ⚠️ Scheduler implementation (stub only)
-- ⚠️ Deterministic PRNG (interface only)
-- ⚠️ Virtual time implementation
-- ⚠️ Deadlock detection
-- ⚠️ Trace recording and replay
-- ⚠️ Shrinking algorithm
-- ⚠️ Codemod tool implementation
+- ✅ Comprehensive examples with realistic production code
+- 🔴 **Milestone 1**: Core Foundation (0/5 tasks complete)
+  - ⏳ Task 1.1: PRNG Implementation (Next up)
+  - ⏳ Task 1.2: Task Management System
+  - ⏳ Task 1.3: Core Scheduler Engine
+  - ⏳ Task 1.4: Virtual Time System
+  - ⏳ Task 1.5: Fix Type Compatibility Issues
 
 ## Design Principles
 1. **API Compatibility**: Mirror standard library APIs exactly
@@ -118,12 +136,18 @@ Weft aims to catch concurrency bugs that `-race` cannot:
 - Timing-dependent bugs
 
 ## References
-- Design Document: `.claude/weft_design_doc.md`
-- Examples: `examples/`
-- Issue Tracker: https://github.com/mziter/weft/issues
+- **Implementation Roadmap**: `.claude/implementation_roadmap.md` - High-level milestones and strategy
+- **Task List**: `.claude/task_list.md` - Detailed technical tasks with acceptance criteria
+- **Milestone Tracker**: `.claude/milestone_tracker.md` - Progress tracking and validation
+- **Design Document**: `.claude/weft_design_doc.md` - Original technical specification
+- **Examples**: `examples/` - Realistic production code examples
+- **Issue Tracker**: https://github.com/mziter/weft/issues
 
 ## Contributing
 1. Follow conventional commit messages
-2. Add tests for new features
-3. Update documentation as needed
-4. Ensure CI passes before merging
+2. **Follow the implementation roadmap** - Check current milestone/task before starting work
+3. **Update progress tracking** - Mark tasks complete in milestone tracker
+4. Add tests for new features with >90% coverage target
+5. Update documentation as needed
+6. Ensure CI passes before merging
+7. **Update CLAUDE.md status section** when milestones/tasks change
