@@ -5,7 +5,7 @@ package weft
 import (
 	"time"
 
-	"github.com/yourusername/weft/internal/scheduler"
+	"github.com/mziter/weft/internal/scheduler"
 )
 
 // Scheduler controls the execution of deterministic tasks.

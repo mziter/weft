@@ -3,7 +3,7 @@ package wefttest
 import (
 	"testing"
 
-	"github.com/yourusername/weft"
+	"github.com/mziter/weft"
 )
 
 // Replay runs the build function with a specific seed for reproduction.

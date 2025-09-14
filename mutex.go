@@ -3,7 +3,7 @@
 package weft
 
 import (
-	"github.com/yourusername/weft/internal/scheduler"
+	"github.com/mziter/weft/internal/scheduler"
 )
 
 // Mutex is a deterministic mutual exclusion lock.

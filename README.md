@@ -23,7 +23,7 @@ Weft provides drop-in replacements for Go's concurrency primitives that enable d
 ## Installation
 
 ```bash
-go get github.com/yourusername/weft
+go get github.com/mziter/weft
 ```
 
 ## Quick Start
@@ -35,8 +35,8 @@ package mypackage
 
 import (
     "testing"
-    "github.com/yourusername/weft"
-    "github.com/yourusername/weft/wefttest"
+    "github.com/mziter/weft"
+    "github.com/mziter/weft/wefttest"
 )
 
 func TestConcurrentCounter(t *testing.T) {

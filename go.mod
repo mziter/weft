@@ -1,4 +1,4 @@
-module github.com/yourusername/weft
+module github.com/mziter/weft
 
 go 1.21
 

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/weft"
+	"github.com/mziter/weft"
 )
 
 // BuildFunc is a function that builds a test scenario using a scheduler.

@@ -3,7 +3,7 @@
 package weft
 
 import (
-	"github.com/yourusername/weft/internal/scheduler"
+	"github.com/mziter/weft/internal/scheduler"
 )
 
 // Chan is a deterministic channel.

@@ -3,8 +3,8 @@ package examples
 import (
 	"testing"
 
-	"github.com/yourusername/weft"
-	"github.com/yourusername/weft/wefttest"
+	"github.com/mziter/weft"
+	"github.com/mziter/weft/wefttest"
 )
 
 // TestConcurrentCounter demonstrates basic usage of weft for testing
