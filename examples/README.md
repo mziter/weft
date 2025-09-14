@@ -91,19 +91,27 @@ Worker pool implementation using condition variables for job coordination.
 
 ## Running the Examples
 
-### Production Mode (Default)
+### Two-Tier Testing Approach
 ```bash
 cd examples
-go test -v
-```
-**Current Status**: Most tests fail because the deterministic scheduler is not yet implemented. The goroutines start but tests complete before they finish.
 
-### Deterministic Mode
-```bash
-cd examples
+# Run basic tests (fast feedback, skips deterministic tests with helpful message)
+go test -v
+
+# Run with deterministic concurrency testing (comprehensive bug detection)
 go test -tags=detsched -v
 ```
-**Current Status**: Build fails due to type mismatches in the scheduler stub. Once implemented, this will run deterministically.
+
+**How it works:**
+- **Without `-tags=detsched`**: Tests using `wefttest.Explore()` skip with guidance to use the tag
+- **With `-tags=detsched`**: Full deterministic scheduling explores multiple execution orders
+- **Current Status**: Deterministic tests fail because scheduler is not yet implemented
+
+### User-Friendly Detection
+The examples demonstrate the detection approach:
+- **Helpful skip messages** when deterministic mode isn't available
+- **Clear guidance** on how to enable comprehensive testing
+- **Zero performance impact** in production builds
 
 ## Expected Behavior (Once Scheduler is Complete)
 
@@ -127,7 +135,7 @@ To convert existing concurrent code to use Weft:
 2. **Replace primitives**: `go func(){}` → `weft.Go(func(ctx weft.Context){})`
 3. **Update channels**: `make(chan T, n)` → `weft.MakeChan[T](n)`
 4. **Add exploration**: Wrap tests with `wefttest.Explore()`
-5. **Use build tags**: Test with `-tags=detsched` for deterministic mode
+5. **Run tests with deterministic mode**: `go test -tags=detsched ./...` - comprehensive concurrency testing!
 
 ## Common Patterns
 

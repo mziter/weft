@@ -218,6 +218,60 @@ func (c *VirtualClock) processExpiredTimers() []*Task
 
 ---
 
+### Task 1.6: Build Tag Detection for wefttest
+**File**: `wefttest/explore.go`, `wefttest/replay.go`
+**Complexity**: Low
+**Dependencies**: None
+
+#### Requirements
+- Implement runtime detection of deterministic mode availability
+- Provide helpful skip messages when `-tags=detsched` is not used
+- Ensure zero performance impact in production
+- Guide developers toward correct usage
+
+#### Implementation Details
+```go
+// wefttest/explore.go
+func Explore(t *testing.T, runs int, build BuildFunc) {
+    t.Helper()
+
+    if !isDeterministicModeAvailable() {
+        t.Skipf(`
+Deterministic concurrency testing not available.
+For comprehensive concurrency testing that can detect race conditions,
+deadlocks, and other subtle bugs, run with:
+
+    go test -tags=detsched
+
+This enables Weft's deterministic scheduler which explores multiple
+execution orders to find bugs that standard tests might miss.
+`)
+        return
+    }
+
+    // ... actual exploration logic
+}
+
+func isDeterministicModeAvailable() bool {
+    // Returns true only when compiled with -tags=detsched
+    // Implementation uses build tags to detect availability
+}
+```
+
+#### Acceptance Criteria
+- [ ] Tests with `wefttest.Explore()` skip gracefully without `-tags=detsched`
+- [ ] Skip message provides clear guidance on how to enable deterministic testing
+- [ ] No runtime overhead when deterministic mode is available
+- [ ] Works with both `Explore()` and `Replay()` functions
+- [ ] Skip message is helpful and actionable
+
+#### Files to Modify
+- `wefttest/explore.go` - Add detection and skip logic
+- `wefttest/replay.go` - Add detection and skip logic
+- `wefttest/detect.go` - Create detection utilities with build tags
+
+---
+
 ## 🔒 MILESTONE 2: Synchronization Primitives
 
 ### Task 2.1: Deterministic Mutex Implementation

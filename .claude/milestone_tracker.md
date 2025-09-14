@@ -7,7 +7,7 @@ This document tracks progress against the implementation roadmap with specific a
 ## 🎯 MILESTONE 1: Core Foundation
 **Status**: 🔴 Not Started
 **Target Completion**: Week 3
-**Current Progress**: 0/5 tasks complete
+**Current Progress**: 0/6 tasks complete
 
 ### Task Status Overview
 - [ ] **Task 1.1**: PRNG Implementation - `internal/prng/prng.go`
@@ -15,6 +15,7 @@ This document tracks progress against the implementation roadmap with specific a
 - [ ] **Task 1.3**: Core Scheduler Engine - `internal/scheduler/scheduler.go`
 - [ ] **Task 1.4**: Virtual Time System - `internal/scheduler/clock.go`
 - [ ] **Task 1.5**: Fix Type Compatibility Issues - Multiple files
+- [ ] **Task 1.6**: Build Tag Detection for wefttest - `wefttest/`
 
 ### Acceptance Criteria Checklist
 
@@ -55,6 +56,13 @@ This document tracks progress against the implementation roadmap with specific a
 - [ ] No type assertion failures at runtime
 - [ ] Examples run without compilation errors
 
+#### Task 1.6: Build Tag Detection for wefttest
+- [ ] Tests with `wefttest.Explore()` skip gracefully without `-tags=detsched`
+- [ ] Skip message provides clear guidance on how to enable deterministic testing
+- [ ] No runtime overhead when deterministic mode is available
+- [ ] Works with both `Explore()` and `Replay()` functions
+- [ ] Skip message is helpful and actionable
+
 ### Validation Tests
 ```bash
 # Basic compilation test
@@ -71,11 +79,12 @@ cd examples && WEFT_SEED=12345 go test -tags=detsched -v -run TestCounter
 ```
 
 ### Milestone 1 Definition of Done
-- [ ] All 5 tasks complete with acceptance criteria met
+- [ ] All 6 tasks complete with acceptance criteria met
 - [ ] All validation tests pass
 - [ ] `examples/counter_test.go` passes with deterministic results
 - [ ] Same seed produces identical task scheduling across runs
 - [ ] Virtual time advances predictably
+- [ ] Tests skip gracefully without `-tags=detsched` with helpful messages
 - [ ] Code review completed and approved
 - [ ] Performance meets targets (baseline established)
 
