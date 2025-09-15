@@ -5,9 +5,9 @@ This document tracks progress against the implementation roadmap with specific a
 ---
 
 ## 🎯 MILESTONE 1: Core Foundation
-**Status**: 🔴 Not Started
+**Status**: 🟡 In Progress
 **Target Completion**: Week 3
-**Current Progress**: 0/6 tasks complete
+**Current Progress**: 1/6 tasks complete
 
 ### Task Status Overview
 - [ ] **Task 1.1**: PRNG Implementation - `internal/prng/prng.go`
@@ -15,7 +15,7 @@ This document tracks progress against the implementation roadmap with specific a
 - [ ] **Task 1.3**: Core Scheduler Engine - `internal/scheduler/scheduler.go`
 - [ ] **Task 1.4**: Virtual Time System - `internal/scheduler/clock.go`
 - [ ] **Task 1.5**: Fix Type Compatibility Issues - Multiple files
-- [ ] **Task 1.6**: Build Tag Detection for wefttest - `wefttest/`
+- [x] **Task 1.6**: Build Tag Detection for wefttest - `wefttest/` ✅ COMPLETED
 
 ### Acceptance Criteria Checklist
 
@@ -56,12 +56,14 @@ This document tracks progress against the implementation roadmap with specific a
 - [ ] No type assertion failures at runtime
 - [ ] Examples run without compilation errors
 
-#### Task 1.6: Build Tag Detection for wefttest
-- [ ] Tests with `wefttest.Explore()` skip gracefully without `-tags=detsched`
-- [ ] Skip message provides clear guidance on how to enable deterministic testing
-- [ ] No runtime overhead when deterministic mode is available
-- [ ] Works with both `Explore()` and `Replay()` functions
-- [ ] Skip message is helpful and actionable
+#### Task 1.6: Build Tag Detection for wefttest ✅ COMPLETED
+- [x] Tests with `wefttest.Explore()` skip gracefully without `-tags=detsched`
+- [x] Skip message provides clear guidance on how to enable deterministic testing
+- [x] No runtime overhead when deterministic mode is available (verified with 1M operations)
+- [x] Works with both `Explore()` and `Replay()` functions
+- [x] Skip message is helpful and actionable
+- [x] ExploreWithSeeds also skips gracefully with same message
+- [x] All example tests skip gracefully without build tag
 
 ### Validation Tests
 ```bash

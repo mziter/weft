@@ -104,7 +104,8 @@ The project follows a 5-milestone development plan:
 - ✅ Build tag separation
 - ✅ API stubs for all primitives
 - ✅ Comprehensive examples with realistic production code
-- 🔴 **Milestone 1**: Core Foundation (0/5 tasks complete)
+- 🟡 **Milestone 1**: Core Foundation (1/6 tasks complete)
+  - ✅ Task 1.6: Build Tag Detection for wefttest (COMPLETED)
   - ⏳ Task 1.1: PRNG Implementation (Next up)
   - ⏳ Task 1.2: Task Management System
   - ⏳ Task 1.3: Core Scheduler Engine

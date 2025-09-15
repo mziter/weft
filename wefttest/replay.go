@@ -7,9 +7,22 @@ import (
 )
 
 // Replay runs the build function with a specific seed for reproduction.
-func Replay(t *testing.T, seed uint64, build BuildFunc) {
+func Replay(t testing.TB, seed uint64, build BuildFunc) {
 	t.Helper()
-	
+
+	if !isDeterministicModeAvailable() {
+		t.Skipf(`
+Deterministic concurrency testing not available.
+For comprehensive concurrency testing that can detect race conditions,
+deadlocks, and other subtle bugs, run with:
+
+    go test -tags=detsched
+
+This enables Weft's deterministic scheduler which explores multiple
+execution orders to find bugs that standard tests might miss.`)
+		return
+	}
+
 	s := weft.NewScheduler(seed)
 	
 	defer func() {
